@@ -5,13 +5,15 @@ body {
 .container {
     width: 50%;
     margin: auto;
+    text-align: center;
 }
 .inputSentence {
     margin: 2em;
     padding: 1em;
     font-size: 1em;
     border-color: antiquewhite;
-    background-color: antiquewhite;
+    background-color: lightblue;
+    border-radius: 1em;
 }
 .wordCount {
     font-size: 2em;
@@ -22,4 +24,9 @@ body {
     padding: 1em;
     margin: 2em;
     font-size: 1em;
+    box-shadow: 50%;
+    border-radius: 1em;
+}
+h1 {
+    text-align: center;
 }
