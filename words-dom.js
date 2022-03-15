@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '.analyseBtn',
       '.outputSentence',
       '.wordCount',
-    ];
+    ]; 
   
     const elements = selectors.map((selector) =>
       document.querySelector(selector),
