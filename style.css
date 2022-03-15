@@ -1,0 +1,25 @@
+body {
+    background-color: lightblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container {
+    width: 50%;
+    margin: auto;
+}
+.inputSentence {
+    margin: 2em;
+    padding: 1em;
+    font-size: 1em;
+    border-color: antiquewhite;
+    background-color: antiquewhite;
+}
+.wordCount {
+    font-size: 2em;
+}
+.analyseBtn {
+    background-color: skyblue;
+    border-color: skyblue;
+    padding: 1em;
+    margin: 2em;
+    font-size: 1em;
+}
