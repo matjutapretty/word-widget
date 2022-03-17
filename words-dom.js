@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const selectors = [
+localStorage.setItem('sentence', 'sentence')
+let sentence = localStorage.getItem("sentence")
+document.getElementById("wordGame", sentence).value = sentence
+ 
+  
+  const selectors = [
       '.inputSentence',
       '.analyseBtn',
       '.outputSentence',
@@ -11,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector(selector),
     );
   
-    const [inputSentence, analyseBtn, outputSentence, wordCount, hideWords] = elements;
-  
+    const [inputSentence, analyseBtn, outputSentence, wordCount, hideWords] = elements; 
+    
     analyseBtn.addEventListener('click', () => {
       let sentence = inputSentence.value;
       if (sentence !== '') {
@@ -41,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         wordCount.innerHTML = `Word count: ${words.length}`;
       }
     });
+
+    // outputSentence = document.getElementById('textfield')
+    // localStorage.setItem('text', outputSentence)
   
     hideWords.addEventListener('click', () => {
       let words = outputSentence.children;
@@ -51,5 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+  // });
   });
   
