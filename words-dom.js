@@ -1,64 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
-localStorage.setItem('sentence', 'sentence')
-let sentence = localStorage.getItem("sentence")
-document.getElementById("wordGame", sentence).value = sentence
- 
-  
-  const selectors = [
-      '.inputSentence',
-      '.analyseBtn',
-      '.outputSentence',
-      '.wordCount',
-      '#hideWords',
-    ];
-  
-    const elements = selectors.map((selector) =>
-      document.querySelector(selector),
-    );
-  
-    const [inputSentence, analyseBtn, outputSentence, wordCount, hideWords] = elements; 
-    
-    analyseBtn.addEventListener('click', () => {
-      let sentence = inputSentence.value;
-      if (sentence !== '') {
-        sentence = sentence.trim();
-        const words = sentence.split(/\s+/);
-        let longestWords = words.reduce((longerWords, word) => {
-          word = word.replace(/\W+/g, '');
-          if (!longerWords || word.length > longerWords[0].length) {
-            return [word];
-          } else if (word.length == longerWords[0].length) {
-            return [word, ...longerWords];
-          } else {
-            return longerWords;
-          }
-        });
-        sentence = words.map((word) => {
-          const chars = word.replace(/\W+/g, '');
-          if (longestWords.includes(chars)) {
-            word = `<mark class="longest">${word}</mark>`;
-          } else if (chars.length > 4) {
-            word = `<mark>${word}</mark>`;
-          }
-          return `<span>${word}</span>`;
-        });
-        outputSentence.innerHTML = sentence.join(' ');
-        wordCount.innerHTML = `Word count: ${words.length}`;
-      }
-    });
+const inputSentence = document.querySelector(".inputSentence")
+const analyseBtn =document.querySelector(".analyseBtn")
+const hideWords = document.getElementById("hideWords")
+const NumberOfWords = document.querySelector(".countingWords")
+const messages = document.querySelector(".sentences")
+const sentence = document.querySelector(".list")
+const previousSentence = []
 
-    // outputSentence = document.getElementById('textfield')
-    // localStorage.setItem('text', outputSentence)
-  
-    hideWords.addEventListener('click', () => {
-      let words = outputSentence.children;
-      for (let i = 0; i < words.length; i++) {
-        let word = words[i].innerHTML
-        if (word.length < 5) {
-          words[i].classList.toggle('hidden');
-        }
+function btnClicked() {
+let string = " ";
+const words = inputSentence.value;
+const splitWords = words.split(" ")
+
+  let wordCount = words.match(/(\w+)/g).length;
+  NumberOfWords.innerHTML = `Word Count : ${wordCount}`;
+
+  for(let i =0; i < splitWords.length; i++) {
+    const element = splitWords[i];
+    if(element.length > 4 ){
+      string += '<mark>' + element + '</mark>'
+    } else {
+      string += element + " ";
+    }
+  }
+  previousSentence.push(string)
+  messages.innerHTML = `5 characters or more : ${string},`;
+  sentence.innerHTML = `Last 5 sentences : ${previousSentence}`;
+}
+
+hideWords.addEventListener('click', function(){
+  let mySrting = ' ';
+  const longestWords = inputSentence.value.split(" ")
+  if (hideWords.checked == true){
+    for(let i = 0; i < longestWords.length; i++){
+      const element = longestWords[i];
+
+      if (element.length > 4){
+        mySrting += '<mark>' + element + '</mark>'
       }
-    });
-  // });
-  });
+    }
+  } else {
+    for (let i = 0; i < longestWords.length; i++){
+      const element = longestWords[i];
+
+      if(element.length > 4){
+        mySrting += '<mark>' + element + '</mark>'
+      } else {
+        mySrting += element + ' '
+      }
+    }
+  }
+  messages.innerHTML = `5 Characters Or More :  ${mySrting}`;
+})
+analyseBtn.addEventListener('click', btnClicked)
+
   

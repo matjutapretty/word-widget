@@ -5,24 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Words Widget</title>
+    <title>Word Widget</title>
 </head>
 <body>
-    <h1>Word Widget</h1>
-    <br>
+    
     <div class="container">
-        <h4>Enter a sentence of 5 or more words.</h4>
-        <input type="text" id="wordGame" class="inputSentence" placeholder="Enter your sentence here...">
-        <button class="analyseBtn">Analyse</button>
-        <div class="outputSentence"></div>
-        <div class="wordCount"></div>
-
         <div>
-            <input type="checkbox" name="hideWords" id="hideWords">
-            <label for="hideWords">Hide all words fewer than 5 characters.</label>
+            <h4>Enter a sentence of 5 or more words.</h4>
+        <input type="text" class="inputSentence" value=" " placeholder="Enter your sentence here...">
+        <button class="analyseBtn" value="analyse">Analyse</button>
         </div>
+
+        <input type="checkbox" value="hideWords" id="hideWords" data-input-id>
+        <label for="hideWords">Hide all words fewer than 5 characters.</label>
+
+    <!-- </div> -->
+
+    <div class="sentences">
+        
     </div>
 
-<script src="words-dom.js"></script>
+    <br>
+
+    <div class="countingWords">
+        <h4>Word Count: </h4>
+    </div>
+
+    <div class="list">
+        <h4>Sentences: </h4>
+    </div>
+
+    </div>
+
+    <script src="words-dom.js"></script>
+
+
 </body>
 </html>
+
+

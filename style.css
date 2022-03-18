@@ -28,9 +28,13 @@ body {
     box-shadow: 50%;
     border-radius: 1em;
 }
-h1 {
+h1, h2 {
     text-align: center;
 }
 .hidden {
     visibility: hidden;
-  }
+}
+mark1 {
+    background-color: green;
+    color: black;
+}
