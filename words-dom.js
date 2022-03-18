@@ -1,3 +1,6 @@
+// localStorage.setItem()
+// localStorage.getItem()
+
 const inputSentence = document.querySelector(".inputSentence")
 const analyseBtn =document.querySelector(".analyseBtn")
 const hideWords = document.getElementById("hideWords")
@@ -23,7 +26,7 @@ const splitWords = words.split(" ")
     }
   }
   previousSentence.push(string)
-  messages.innerHTML = `5 characters or more : ${string},`;
+  messages.innerHTML = ` ${string},`;
   sentence.innerHTML = `Last 5 sentences : ${previousSentence}`;
 }
 
@@ -49,7 +52,7 @@ hideWords.addEventListener('click', function(){
       }
     }
   }
-  messages.innerHTML = `5 Characters Or More :  ${mySrting}`;
+  messages.innerHTML = `${mySrting}`;
 })
 analyseBtn.addEventListener('click', btnClicked)
 
