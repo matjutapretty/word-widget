@@ -4,6 +4,7 @@ const hideWords = document.getElementById("hideWords")
 const NumberOfWords = document.querySelector(".countingWords")
 const messages = document.querySelector(".sentences")
 const sentence = document.querySelector(".list")
+const types = document.querySelector('.longest')
 const previousSentence = []
 
 function btnClicked() {
@@ -14,6 +15,7 @@ const splitWords = words.split(" ");
   let wordCount = words.match(/(\w+)/g).length;
   NumberOfWords.innerHTML = `Word Count : ${wordCount}`;
 
+  // decoupling sentences
   const wordList = splitWords.map(word => {
     return {
       word,
@@ -32,10 +34,12 @@ const splitWords = words.split(" ");
     }
   });
 
+  const longer = wordList[longestWord.index].word
+
   const longestWords = wordList.filter(word => word.length === longestWord.length);
-  wordList[longestWord.index].type = '<span>' + longestWords + '</span>'
-  
-  console.log(longestWords)
+  // longestWords.forEach(word => word.type = "longest")
+  // wordList[longestWord.index].type = '<span>' + longestWords + '</span>'
+  types.innerHTML = `Longest Word : <span style="background-color: pink;"> ${longer} </span>`
 
   for(let i = 0; i < splitWords.length; i++) {
     const element = splitWords[i];
@@ -45,7 +49,6 @@ const splitWords = words.split(" ");
     if(element.length >= 5 ){
       string += '<mark> ' + element + '</mark> '
      if (element.length > string.length) {
-       console.log(string)
        averageLength += '<span>' + element + '</span>'
      } 
     } else {
