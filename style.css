@@ -7,12 +7,12 @@ body {
     margin: auto;
     text-align: center;
 }
-.longestWord {
-    background-color: yellow;
+/* .mark1 {
+    background-color: palevioletred;
 }
-mark {
-    background-color: greenyellow;
-}
+.mark {
+    background-color: dodgerblue;
+} */
 .inputSentence {
     margin: 2em;
     padding: 1em;

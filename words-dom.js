@@ -5,6 +5,7 @@ const NumberOfWords = document.querySelector(".countingWords")
 const messages = document.querySelector(".sentences")
 const sentence = document.querySelector(".list")
 const types = document.querySelector('.longest')
+const longest = document.querySelector('.longest')
 const previousSentence = []
 
 function btnClicked() {
@@ -14,6 +15,7 @@ const splitWords = words.split(" ");
 
   let wordCount = words.match(/(\w+)/g).length;
   NumberOfWords.innerHTML = `Word Count : ${wordCount}`;
+
 
   // decoupling sentences
   const wordList = splitWords.map(word => {
@@ -39,24 +41,29 @@ const splitWords = words.split(" ");
   const longestWords = wordList.filter(word => word.length === longestWord.length);
   // longestWords.forEach(word => word.type = "longest")
   // wordList[longestWord.index].type = '<span>' + longestWords + '</span>'
-  types.innerHTML = `Longest Word : <span style="background-color: pink;"> ${longer} </span>`
+  // types.innerHTML = `Longest Word : <span style="background-color: dodgerblue;"> ${longer} </span>`
+
+  console.log(longestWords)
 
   for(let i = 0; i < splitWords.length; i++) {
     const element = splitWords[i];
 
-    let averageLength = " ";
+    // let averageLength = " ";
 
     if(element.length >= 5 ){
-      string += '<mark> ' + element + '</mark> '
-     if (element.length > string.length) {
-       averageLength += '<span>' + element + '</span>'
-     } 
-    } else {
-      string += element + " ";
+      // string += '<mark> ' + element + '</mark> '
+     if (element.length >= longer.length) {
+      string += '<span style="background-color: dodgerblue;">' + element + '</span>'
+      //  averageLength += '<span style="background-color: dodgerblue;">' + element + '</span>'
+     } else {
+      string += '<span style="background-color: yellow;">' + element + '</span>'
      }
+  } else {
+    string += element + " ";
   }
+}
 
-  previousSentence.push(string)
+  previousSentence.unshift(string)
   if (previousSentence.length <= 5) {
     sentence.innerHTML = `Last 5 sentences : ${previousSentence},`;
   }
@@ -79,7 +86,7 @@ hideWords.addEventListener('click', function(){
     for (let i = 0; i < longestWords.length; i++){
       const element = longestWords[i];
 
-      if(element.length > 4){
+      if(element.length >= 5){
         mySrting += "<mark> " + element + "</mark> "
       } else {
         mySrting += element + " "
