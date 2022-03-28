@@ -4,6 +4,7 @@ const hideWords = document.getElementById("hideWords")
 const NumberOfWords = document.querySelector(".countingWords")
 const messages = document.querySelector(".results")
 const sentence = document.querySelector(".list")
+const theSentence = document.querySelector(".theSentence")
 let previousSentence = [];
 
 let slider = document.getElementById("sliderRange")
@@ -108,5 +109,11 @@ slider.oninput();
 
 analyseBtn.addEventListener('click', btnClicked)
 
+if (localStorage[theSentence]) {
+  document.querySelector(".sentences").innerHTML = localStorage['theSentence']
+} else {
+  localStorage['previous'] = sentence.innerHTML = `Last 5 sentences : ${previousSentence}`
 
+  localStorage['theSentence'] = theSentence
+}
   
