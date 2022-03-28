@@ -2,11 +2,9 @@ const inputSentence = document.querySelector(".inputSentence")
 const analyseBtn =document.querySelector(".analyseBtn")
 const hideWords = document.getElementById("hideWords")
 const NumberOfWords = document.querySelector(".countingWords")
-const messages = document.querySelector(".sentences")
+const messages = document.querySelector(".results")
 const sentence = document.querySelector(".list")
-const types = document.querySelector('.longest')
-const longest = document.querySelector('.longest')
-const previousSentence = []
+let previousSentence = [];
 
 let slider = document.getElementById("sliderRange")
 let output = document.getElementById("theSlider")
@@ -48,16 +46,14 @@ const splitWords = words.split(" ");
 
   const longer = wordList[longestWord.index].word
 
-  for(let i = 0; i < splitWords.length; i++) {
+  for (let i = 0; i < splitWords.length; i++) {
     const element = splitWords[i];
 
-    if(element.length == mm ){
-     if (element.length >= longer.length) {
-      string += '<mark style="background-color: dodgerblue"> ' + element + '</mark>'
+    if(element.length == mm ){ 
+      string += '<mark style = "background-color : dodgerblue">' + element + '</mark> '
+     } if (element.length >= longer.length) {
+      string += '<mark style = "background-color : pink">' + element + '</mark> '
      } else {
-      string += '<mark> ' + element + '</mark>'
-     }
-  } else {
     string += element + " ";
   }
 }
@@ -70,7 +66,7 @@ const splitWords = words.split(" ");
       localStorage['previous'] = sentence.innerHTML = `Last 5 sentences : ${previousSentence}`
     }
   
-    messages.innerHTML = `5 Character(s) : ${string}`;
+    messages.innerHTML = ` ${mm} Character(s) : ${string} `;
 
 
 
@@ -83,27 +79,24 @@ hideWords.addEventListener('click', function(){
       
       const element = longestWords[i];
 
-      if (element.length > 4){
-        mySrting += '<mark> ' + element + '</mark>'
+      if (element.length == mm){
+        mySrting += '<mark style = "background-color : dodgerblue">' + element + '</mark> '
       } if (element.length >= longer.length){
-        mySrting += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
+        mySrting += '<mark style = "background-color : pink;">' + element + '</mark> '
       }
     }
   } else {
-    for (let i = 0; i < longestWords.length; i++){
+    for (let i = 0; i < splitWords.length; i++){
       
-      const element = longestWords[i];
+      const element = splitWords[i];
 
-      if(element.length >= 5){
-        if (element.length >= longer.longer){
-          mySrting += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
-        } else {
-          mySrting += '<mark> ' + element + '</mark>'
-        } 
+      if(element.length == mm){
+          mySrting += '<mark style = "background-color : dodgerblue;">' + element + '</mark> '
+        } if (element.length >= longer.longer){ 
+          mySrting += '<mark style = "background-color : pink;">' + element + '</mark> '
         } else {
           mySrting += element + " "
         }
-        
       }
     }
   
