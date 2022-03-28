@@ -8,7 +8,17 @@ const types = document.querySelector('.longest')
 const longest = document.querySelector('.longest')
 const previousSentence = []
 
+let slider = document.getElementById("sliderRange")
+let output = document.getElementById("demo")
+output.innerHTML = slider.value;
+
+slider.oninput = function () {
+  output.innerHTML = this.value;
+  return this.value;
+}
+
 function btnClicked() {
+let y = slider.oninput();
 let string = "";
 const words = inputSentence.value;
 const splitWords = words.split(" ");
@@ -39,24 +49,15 @@ const splitWords = words.split(" ");
   const longer = wordList[longestWord.index].word
 
   const longestWords = wordList.filter(word => word.length === longestWord.length);
-  // longestWords.forEach(word => word.type = "longest")
-  // wordList[longestWord.index].type = '<span>' + longestWords + '</span>'
-  // types.innerHTML = `Longest Word : <span style="background-color: dodgerblue;"> ${longer} </span>`
-
-  console.log(longestWords)
 
   for(let i = 0; i < splitWords.length; i++) {
     const element = splitWords[i];
 
-    // let averageLength = " ";
-
-    if(element.length >= 5 ){
-      // string += '<mark> ' + element + '</mark> '
+    if(element.length == y ){
      if (element.length >= longer.length) {
-      string += '<span style="background-color: dodgerblue;">' + element + '</span>'
-      //  averageLength += '<span style="background-color: dodgerblue;">' + element + '</span>'
-     } else {
-      string += '<span style="background-color: yellow;">' + element + '</span>'
+      string += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
+    //  } else {
+    //   string += '<mark style="background-color: yellow; "> ' + element + '</mark>'
      }
   } else {
     string += element + " ";
@@ -64,37 +65,57 @@ const splitWords = words.split(" ");
 }
 
   previousSentence.unshift(string)
-  if (previousSentence.length <= 5) {
-    sentence.innerHTML = `Last 5 sentences : ${previousSentence},`;
+  if (localStorage['previous']) {
+    sentence.innerHTML = `Last 5 sentences : ${previousSentence} `;
   }
-  messages.innerHTML = ` ${string},`;
-}
+    if (previousSentence.length <= 5){
+      localStorage['previous'] = sentence.innerHTML = `Last 5 sentences : ${previousSentence}`
+    }
+  
+    messages.innerHTML = `5 Character(s) : ${string}`;
+
 
 
 hideWords.addEventListener('click', function(){
   let mySrting = " ";
   const longestWords = inputSentence.value.split(" ")
+  
   if (hideWords.checked == true){
     for(let i = 0; i < longestWords.length; i++){
+      
       const element = longestWords[i];
 
       if (element.length > 4){
-        mySrting += "<mark> " + element + "</mark> "
+        mySrting += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
+      } if (element.length >= longer.length){
+        mySrting += '<mark style="background-color: yellow;"> ' + element + '</mark>'
       }
     }
   } else {
     for (let i = 0; i < longestWords.length; i++){
+      
       const element = longestWords[i];
 
       if(element.length >= 5){
-        mySrting += "<mark> " + element + "</mark> "
-      } else {
-        mySrting += element + " "
+        if (element.length >= longer.longer){
+          mySrting += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
+        } else {
+          mySrting += '<mark> ' + element + '</mark>'
+        } 
+        } else {
+          mySrting += element + " "
+        }
+        
       }
     }
-  }
-  messages.innerHTML = `${mySrting},`;
+  
+  messages.innerHTML = `5 Character(s) : ${mySrting}`;
 })
+}
+
+slider.oninput();
+
 analyseBtn.addEventListener('click', btnClicked)
+
 
   

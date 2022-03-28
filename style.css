@@ -7,10 +7,11 @@ body {
     margin: auto;
     text-align: center;
 }
-/* .mark1 {
-    background-color: palevioletred;
+.slider {
+    width: 50%;
+	margin: auto;
 }
-.mark {
+/* .mark {
     background-color: dodgerblue;
 } */
 .inputSentence {
