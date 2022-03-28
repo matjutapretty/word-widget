@@ -9,7 +9,7 @@ const longest = document.querySelector('.longest')
 const previousSentence = []
 
 let slider = document.getElementById("sliderRange")
-let output = document.getElementById("demo")
+let output = document.getElementById("theSlider")
 output.innerHTML = slider.value;
 
 slider.oninput = function () {
@@ -18,7 +18,7 @@ slider.oninput = function () {
 }
 
 function btnClicked() {
-let y = slider.oninput();
+let mm = slider.oninput();
 let string = "";
 const words = inputSentence.value;
 const splitWords = words.split(" ");
@@ -48,16 +48,14 @@ const splitWords = words.split(" ");
 
   const longer = wordList[longestWord.index].word
 
-  const longestWords = wordList.filter(word => word.length === longestWord.length);
-
   for(let i = 0; i < splitWords.length; i++) {
     const element = splitWords[i];
 
-    if(element.length == y ){
+    if(element.length == mm ){
      if (element.length >= longer.length) {
-      string += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
-    //  } else {
-    //   string += '<mark style="background-color: yellow; "> ' + element + '</mark>'
+      string += '<mark style="background-color: dodgerblue"> ' + element + '</mark>'
+     } else {
+      string += '<mark> ' + element + '</mark>'
      }
   } else {
     string += element + " ";
@@ -86,9 +84,9 @@ hideWords.addEventListener('click', function(){
       const element = longestWords[i];
 
       if (element.length > 4){
-        mySrting += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
+        mySrting += '<mark> ' + element + '</mark>'
       } if (element.length >= longer.length){
-        mySrting += '<mark style="background-color: yellow;"> ' + element + '</mark>'
+        mySrting += '<mark style="background-color: dodgerblue;"> ' + element + '</mark>'
       }
     }
   } else {
