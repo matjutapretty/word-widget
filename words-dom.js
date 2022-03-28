@@ -92,7 +92,7 @@ hideWords.addEventListener('click', function(){
 
       if(element.length == mm){
           mySrting += '<mark style = "background-color : dodgerblue;">' + element + '</mark> '
-        } if (element.length >= longer.longer){ 
+        } if (element.length >= longer.length){ 
           mySrting += '<mark style = "background-color : pink;">' + element + '</mark> '
         } else {
           mySrting += element + " "
